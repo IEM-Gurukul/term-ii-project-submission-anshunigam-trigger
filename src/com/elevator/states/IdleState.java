@@ -8,16 +8,17 @@ public class IdleState implements ElevatorState {
     public void handleRequest(Elevator elevator, int destinationFloor) {
 
         if(destinationFloor > elevator.getCurrentFloor()){
-            elevator.setDirection("UP");
-        } 
+            elevator.setState(new MovingUpState());
+        }
         else if(destinationFloor < elevator.getCurrentFloor()){
-            elevator.setDirection("DOWN");
-        } 
+            elevator.setState(new MovingDownState());
+        }
         else {
-            System.out.println("Elevator already at requested floor.");
+            System.out.println("Already at the requested floor");
             return;
         }
 
-        elevator.moveToFloor(destinationFloor);
+        // Delegate to new state
+        elevator.requestFloor(destinationFloor);
     }
 }
