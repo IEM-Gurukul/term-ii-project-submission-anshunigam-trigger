@@ -20,12 +20,16 @@ public class ElevatorController {
     // Add request
     public void addRequest(int floor) {
 
-        if(floor > elevator.getCurrentFloor()) {
-            upRequests.add(floor);
-        } else {
-            downRequests.add(floor);
-        }
+    if(floor < 0 || floor > 10) {   // assume 10 floors
+        throw new IllegalArgumentException("Invalid floor number");
     }
+
+    if(floor > elevator.getCurrentFloor()) {
+        upRequests.add(floor);
+    } else {
+        downRequests.add(floor);
+    }
+}
 
     // Process requests
     public void processRequests() {
