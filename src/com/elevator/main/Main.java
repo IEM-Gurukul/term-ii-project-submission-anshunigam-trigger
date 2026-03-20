@@ -14,7 +14,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter number of requests:");
+        System.out.print("Enter number of requests: ");
         int n = sc.nextInt();
 
         for(int i = 0; i < n; i++) {
@@ -29,7 +29,6 @@ public class Main {
         }
 
         controller.processRequests();
-
         sc.close();
     }
 }

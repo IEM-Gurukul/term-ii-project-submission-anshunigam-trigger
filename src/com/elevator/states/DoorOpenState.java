@@ -8,8 +8,6 @@ public class DoorOpenState implements ElevatorState {
     public void handleRequest(Elevator elevator, int destinationFloor) {
 
         System.out.println("Door opening at floor " + elevator.getCurrentFloor());
-
-        // After door operation, go back to idle
         elevator.setState(new IdleState());
     }
 }

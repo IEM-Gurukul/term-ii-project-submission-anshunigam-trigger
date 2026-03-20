@@ -6,54 +6,55 @@ import com.elevator.states.IdleState;
 public class Elevator {
 
     private int currentFloor;
-    private String direction;
+    private Direction direction;
     private ElevatorState state;
 
-    // Constructor
     public Elevator() {
         this.currentFloor = 0;
-        this.direction = "IDLE";
+        this.direction = Direction.IDLE;
         this.state = new IdleState();
     }
 
-    // Getter for current floor
     public int getCurrentFloor() {
         return currentFloor;
     }
 
-    // Setter for current floor
-    public void setCurrentFloor(int currentFloor) {
-        this.currentFloor = currentFloor;
+    public void setCurrentFloor(int floor) {
+        this.currentFloor = floor;
     }
 
-    // Getter for direction
-    public String getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
-    // Setter for direction
-    public void setDirection(String direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
-    // Getter for state
     public ElevatorState getState() {
         return state;
     }
 
-    // Setter for state
     public void setState(ElevatorState state) {
         this.state = state;
     }
 
-    // Move elevator
     public void moveToFloor(int floor) {
-        System.out.println("Elevator moving from floor " + currentFloor + " to floor " + floor);
+        System.out.println("---------------------------------");
+        System.out.println("Moving from floor " + currentFloor + " to " + floor);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         this.currentFloor = floor;
+        System.out.println("---------------------------------");
     }
 
-    // Request floor (handled by state)
     public void requestFloor(int destinationFloor) {
+        System.out.println("Current State: " + state.getClass().getSimpleName());
         state.handleRequest(this, destinationFloor);
     }
 }

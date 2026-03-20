@@ -18,7 +18,6 @@ public class IdleState implements ElevatorState {
             return;
         }
 
-        // Delegate to new state
         elevator.requestFloor(destinationFloor);
     }
 }
