@@ -33,21 +33,26 @@ public class ElevatorController {
             downRequests.add(floor);
         }
     }
+public void processRequests() {
 
-    public void processRequests() {
+    System.out.println("Processing UP requests...");
 
-        System.out.println("Processing UP requests...");
-
-        while(!upRequests.isEmpty()) {
-            int next = upRequests.pollFirst();
-            elevator.requestFloor(next);
-        }
-
-        System.out.println("Processing DOWN requests...");
-
-        while(!downRequests.isEmpty()) {
-            int next = downRequests.pollFirst();
-            elevator.requestFloor(next);
-        }
+    while(!upRequests.isEmpty()) {
+        int next = upRequests.pollFirst();
+        elevator.requestFloor(next);
+        elevator.requestFloor(next); // triggers door open
     }
+
+    System.out.println("Processing DOWN requests...");
+
+    if(downRequests.isEmpty()) {
+        System.out.println("No DOWN requests remaining.");
+    }
+
+    while(!downRequests.isEmpty()) {
+        int next = downRequests.pollFirst();
+        elevator.requestFloor(next);
+        elevator.requestFloor(next);
+    }
+}
 }

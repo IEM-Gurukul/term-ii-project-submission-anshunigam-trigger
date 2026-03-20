@@ -13,5 +13,6 @@ public class MovingDownState implements ElevatorState {
 
         elevator.moveToFloor(destinationFloor);
         elevator.setState(new DoorOpenState());
+      
     }
 }
