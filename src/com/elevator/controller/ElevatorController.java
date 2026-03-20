@@ -34,16 +34,20 @@ public class ElevatorController {
     // Process requests
     public void processRequests() {
 
-        // Handle UP direction
-        while(!upRequests.isEmpty()) {
-            int nextFloor = upRequests.pollFirst();
-            elevator.requestFloor(nextFloor);
-        }
+    System.out.println("Processing UP requests...");
 
-        // Handle DOWN direction
-        while(!downRequests.isEmpty()) {
-            int nextFloor = downRequests.pollFirst();
-            elevator.requestFloor(nextFloor);
-        }
+    // Handle UP direction
+    while(!upRequests.isEmpty()) {
+        int nextFloor = upRequests.pollFirst();
+        elevator.requestFloor(nextFloor);
     }
+
+    System.out.println("Processing DOWN requests...");
+
+    // Handle DOWN direction
+    while(!downRequests.isEmpty()) {
+        int nextFloor = downRequests.pollFirst();
+        elevator.requestFloor(nextFloor);
+    }
+}
 }
